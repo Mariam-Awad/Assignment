@@ -1,3 +1,4 @@
+import 'package:assignment/presentation/screens/person_details_cubit/person_details_screen.dart';
 import 'package:assignment/presentation/screens/popular_home_cubit/popular_people_screen.dart';
 import 'package:assignment/utils/app_debug_prints.dart';
 import 'package:assignment/utils/app_routes.dart';
@@ -11,6 +12,13 @@ class AppRouteManager {
       case AppRoutes.homeRouteName:
         return MaterialPageRoute(
           builder: (context) => const PopularHomeScreen(),
+        );
+      case AppRoutes.personDetailsRouteName:
+        return MaterialPageRoute(
+          settings: RouteSettings(arguments: args),
+          builder: (context) => PersonDetailsScreen(
+            id: args as int,
+          ),
         );
       default:
         return MaterialPageRoute(

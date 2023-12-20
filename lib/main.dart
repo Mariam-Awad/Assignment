@@ -1,6 +1,6 @@
 import 'package:assignment/cache/app_cache.dart';
+import 'package:assignment/presentation/screens/person_details_cubit/person_details_cubit.dart';
 import 'package:assignment/presentation/screens/popular_home_cubit/popular_home_cubit.dart';
-import 'package:assignment/presentation/screens/popular_home_screen/test_provider.dart';
 import 'package:assignment/utils/app_routes.dart';
 import 'package:assignment/utils/route_manager.dart';
 import 'package:bot_toast/bot_toast.dart';
@@ -25,8 +25,11 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
         providers: [
           BlocProvider<PopularPeopleCubit>(
-          create: (BuildContext context) => PopularPeopleCubit(),
-        ),
+            create: (BuildContext context) => PopularPeopleCubit(),
+          ),
+          BlocProvider<PersonDetailsCubit>(
+            create: (BuildContext context) => PersonDetailsCubit(),
+          ),
         ],
         child: ScreenUtilInit(
           designSize: const Size(375, 812),

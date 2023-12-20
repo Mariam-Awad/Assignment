@@ -1,6 +1,9 @@
-part of 'person_details_cubit.dart';
+abstract class PersonDetailsState {}
 
-@immutable
-sealed class PersonDetailsCubitState {}
+class PersonDetailsInitialState extends PersonDetailsState {}
 
-final class PersonDetailsCubitInitial extends PersonDetailsCubitState {}
+class PersonDetailsLoadingState extends PersonDetailsState {}
+
+class PersonDetailsSuccessState extends PersonDetailsState {}
+
+class PersonDetailsErrorState extends PersonDetailsState {}

@@ -28,14 +28,17 @@ class PopularCardWidget extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              ClipRRect(
-                borderRadius: BorderRadius.all(Radius.circular(8.r)),
-                child: CachedNetworkImage(
-                  fit: BoxFit.contain,
-                  imageUrl: '${Endpoints.REQUEST_NETWORK_IMAGE}' + image,
-                  placeholder: (context, url) =>
-                      const Center(child:  CircularProgressIndicator()),
-                  errorWidget: (context, url, error) => const Icon(Icons.error),
+              InkWell(
+                onTap: onPress,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.all(Radius.circular(8.r)),
+                  child: CachedNetworkImage(
+                    fit: BoxFit.contain,
+                    imageUrl: '${Endpoints.REQUEST_NETWORK_IMAGE}' + image,
+                    placeholder: (context, url) =>
+                        const Center(child:  CircularProgressIndicator()),
+                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                  ),
                 ),
               ),
               12.verticalSpace,

@@ -1,6 +1,7 @@
 import 'package:assignment/presentation/screens/popular_home_cubit/popular_home_cubit.dart';
 import 'package:assignment/presentation/screens/popular_home_cubit/popular_people_state.dart';
 import 'package:assignment/presentation/widgets/popular_card_widget.dart';
+import 'package:assignment/utils/app_routes.dart';
 import 'package:assignment/utils/app_styles_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -63,7 +64,13 @@ class PopularListWidget extends StatelessWidget {
                 String? res = cubit.knownFor(cubit.allPeople[index].knownFor!);
                 if (index < cubit.allPeople.length) {
                   return PopularCardWidget(cubit.allPeople[index].profilePath!,
-                      cubit.allPeople[index].name!, res ?? '', () {});
+                      cubit.allPeople[index].name!, res ?? '', () {
+                    Navigator.pushNamed(
+                      context,
+                      AppRoutes.personDetailsRouteName,
+                      arguments: cubit.allPeople[index].id,
+                    );
+                  });
                 } else {
                   return IconButton(
                     onPressed: () {
