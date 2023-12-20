@@ -1,7 +1,5 @@
-import 'package:assignment/presentation/screens/person_details_cubit/person_details_cubit.dart';
-import 'package:assignment/presentation/widgets/person_details_widget.dart';
-import 'package:assignment/presentation/widgets/popular_list_widget.dart';
-import 'package:assignment/utils/app_styles_util.dart';
+import 'package:assignment/screens/person_details/person_details_cubit/person_details_cubit.dart';
+import 'package:assignment/screens/person_details/widgets/person_details_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

@@ -1,4 +1,5 @@
 import 'package:assignment/network/end_points.dart';
+import 'package:assignment/utils/app_colors_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -15,7 +16,7 @@ class GallaryWidget extends StatelessWidget {
       borderRadius: BorderRadius.only(
           bottomLeft: Radius.circular(8.r), bottomRight: Radius.circular(8.r)),
       child: Card(
-        color: Colors.white,
+        color: AppColorUtil.white,
         elevation: 6.0,
         child: InkWell(
           onTap: onPress,

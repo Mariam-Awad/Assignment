@@ -1,5 +1,6 @@
 import 'package:assignment/network/end_points.dart';
-import 'package:assignment/presentation/screens/person_details_cubit/person_details_cubit.dart';
+import 'package:assignment/screens/person_details/person_details_cubit/person_details_cubit.dart';
+import 'package:assignment/utils/app_colors_util.dart';
 import 'package:assignment/utils/app_debug_prints.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -31,7 +32,7 @@ class ImageScreen extends StatelessWidget {
                 },
                 icon: Icon(
                   Icons.save,
-                  color: Colors.black,
+                  color: AppColorUtil.black,
                   size: 25.sp,
                 ))
           ],
@@ -44,7 +45,7 @@ class ImageScreen extends StatelessWidget {
                   bottomLeft: Radius.circular(8.r),
                   bottomRight: Radius.circular(8.r)),
               child: Card(
-                color: Colors.white,
+                color: AppColorUtil.white,
                 elevation: 6.0,
                 child: ClipRRect(
                   borderRadius: BorderRadius.all(Radius.circular(8.r)),

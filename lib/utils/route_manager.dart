@@ -1,6 +1,6 @@
-import 'package:assignment/presentation/screens/person_details_cubit/image_screen.dart';
-import 'package:assignment/presentation/screens/person_details_cubit/person_details_screen.dart';
-import 'package:assignment/presentation/screens/popular_home_cubit/popular_people_screen.dart';
+import 'package:assignment/screens/person_details/view/image_screen.dart';
+import 'package:assignment/screens/person_details/view/person_details_screen.dart';
+import 'package:assignment/screens/popular_home/view/popular_people_screen.dart';
 import 'package:assignment/utils/app_debug_prints.dart';
 import 'package:assignment/utils/app_routes.dart';
 import 'package:flutter/material.dart';

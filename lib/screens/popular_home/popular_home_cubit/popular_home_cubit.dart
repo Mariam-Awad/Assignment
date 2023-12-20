@@ -1,6 +1,6 @@
 import 'package:assignment/cache/app_cache.dart';
 import 'package:assignment/models/popular_people_model.dart';
-import 'package:assignment/presentation/screens/popular_home_cubit/popular_people_state.dart';
+import 'package:assignment/screens/popular_home/popular_home_cubit/popular_people_state.dart';
 import 'package:assignment/repositories/popular_people_repo.dart';
 import 'package:assignment/utils/app_debug_prints.dart';
 import 'package:connectivity/connectivity.dart';

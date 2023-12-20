@@ -1,8 +1,9 @@
 import 'package:assignment/network/end_points.dart';
-import 'package:assignment/presentation/screens/person_details_cubit/person_details_cubit.dart';
-import 'package:assignment/presentation/screens/person_details_cubit/person_details_state.dart';
-import 'package:assignment/presentation/widgets/gallary_widget.dart';
-import 'package:assignment/presentation/widgets/person_images_widget.dart';
+import 'package:assignment/screens/person_details/person_details_cubit/person_details_cubit.dart';
+import 'package:assignment/screens/person_details/person_details_cubit/person_details_state.dart';
+import 'package:assignment/screens/person_details/widgets/person_images_widget.dart';
+import 'package:assignment/utils/app_colors_util.dart';
+import 'package:assignment/utils/app_strings.dart';
 import 'package:assignment/utils/app_styles_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -27,9 +28,9 @@ class PersonDetailsWidget extends StatelessWidget {
       else if (cubit.personDetailsModel == null) {
         return Center(
           child: Text(
-            'Pleasr try again later!',
+            pleaseTryAgainLater,
             style: AppStylesUtil.textRegularStyle(
-                16, Colors.black, FontWeight.w400),
+                16, AppColorUtil.black, FontWeight.w400),
           ),
         );
       }
@@ -60,15 +61,15 @@ class PersonDetailsWidget extends StatelessWidget {
               textAlign: TextAlign.start,
               textScaler: const TextScaler.linear(0.97),
               style: AppStylesUtil.textBoldStyle(
-                  24.sp, Colors.black, FontWeight.w700),
+                  24.sp, AppColorUtil.black, FontWeight.w700),
             ),
             8.verticalSpace,
             Text(
-              'Biography',
+              biography,
               textAlign: TextAlign.start,
               textScaler: const TextScaler.linear(0.97),
               style: AppStylesUtil.textSemiBoldStyle(
-                  18.sp, Colors.black, FontWeight.w600),
+                  18.sp, AppColorUtil.black, FontWeight.w600),
             ),
             8.verticalSpace,
             Text(
@@ -76,25 +77,25 @@ class PersonDetailsWidget extends StatelessWidget {
               textAlign: TextAlign.start,
               textScaler: const TextScaler.linear(0.97),
               style: AppStylesUtil.textRegularStyle(
-                  14.sp, Colors.black, FontWeight.w400),
+                  14.sp, AppColorUtil.black, FontWeight.w400),
             ),
             8.verticalSpace,
             Text(
-              'Personal Info: ',
+              personalInfo,
               textAlign: TextAlign.start,
               textScaler: const TextScaler.linear(0.97),
               style: AppStylesUtil.textSemiBoldStyle(
-                  18.sp, Colors.black, FontWeight.w600),
+                  18.sp, AppColorUtil.black, FontWeight.w600),
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Known For: ',
+                  knowFor,
                   textAlign: TextAlign.start,
                   textScaler: const TextScaler.linear(0.97),
                   style: AppStylesUtil.textSemiBoldStyle(
-                      18.sp, Colors.black, FontWeight.w600),
+                      18.sp, AppColorUtil.black, FontWeight.w600),
                 ),
                 12.horizontalSpace,
                 Text(
@@ -102,7 +103,7 @@ class PersonDetailsWidget extends StatelessWidget {
                   textAlign: TextAlign.start,
                   textScaler: const TextScaler.linear(0.97),
                   style: AppStylesUtil.textRegularStyle(
-                      14.sp, Colors.black, FontWeight.w400),
+                      14.sp, AppColorUtil.black, FontWeight.w400),
                 ),
               ],
             ),
@@ -111,19 +112,19 @@ class PersonDetailsWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Gender: ',
+                  gender,
                   textAlign: TextAlign.start,
                   textScaler: const TextScaler.linear(0.97),
                   style: AppStylesUtil.textSemiBoldStyle(
-                      18.sp, Colors.black, FontWeight.w600),
+                      18.sp, AppColorUtil.black, FontWeight.w600),
                 ),
                 12.horizontalSpace,
                 Text(
-                  cubit.personDetailsModel!.gender == 1 ? 'Female' : 'Male',
+                  cubit.personDetailsModel!.gender == 1 ? female : male,
                   textAlign: TextAlign.start,
                   textScaler: const TextScaler.linear(0.97),
                   style: AppStylesUtil.textRegularStyle(
-                      14.sp, Colors.black, FontWeight.w400),
+                      14.sp, AppColorUtil.black, FontWeight.w400),
                 ),
               ],
             ),
@@ -132,11 +133,11 @@ class PersonDetailsWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Birthday: ',
+                  birthday,
                   textAlign: TextAlign.start,
                   textScaler: const TextScaler.linear(0.97),
                   style: AppStylesUtil.textSemiBoldStyle(
-                      18.sp, Colors.black, FontWeight.w600),
+                      18.sp, AppColorUtil.black, FontWeight.w600),
                 ),
                 12.horizontalSpace,
                 Text(
@@ -144,7 +145,7 @@ class PersonDetailsWidget extends StatelessWidget {
                   textAlign: TextAlign.start,
                   textScaler: const TextScaler.linear(0.97),
                   style: AppStylesUtil.textRegularStyle(
-                      14.sp, Colors.black, FontWeight.w400),
+                      14.sp, AppColorUtil.black, FontWeight.w400),
                 ),
               ],
             ),
@@ -153,11 +154,11 @@ class PersonDetailsWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Place of Birth: ',
+                  placeOfBirth,
                   textAlign: TextAlign.start,
                   textScaler: const TextScaler.linear(0.97),
                   style: AppStylesUtil.textSemiBoldStyle(
-                      18.sp, Colors.black, FontWeight.w600),
+                      18.sp, AppColorUtil.black, FontWeight.w600),
                 ),
                 12.horizontalSpace,
                 Expanded(
@@ -166,7 +167,7 @@ class PersonDetailsWidget extends StatelessWidget {
                     textAlign: TextAlign.start,
                     textScaler: const TextScaler.linear(0.97),
                     style: AppStylesUtil.textRegularStyle(
-                        14.sp, Colors.black, FontWeight.w400),
+                        14.sp, AppColorUtil.black, FontWeight.w400),
                   ),
                 ),
               ],
@@ -176,11 +177,11 @@ class PersonDetailsWidget extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Text(
-                  'Also Known As : ',
+                  alsoKnownAs,
                   textAlign: TextAlign.start,
                   textScaler: const TextScaler.linear(0.97),
                   style: AppStylesUtil.textSemiBoldStyle(
-                      18.sp, Colors.black, FontWeight.w600),
+                      18.sp, AppColorUtil.black, FontWeight.w600),
                 ),
                 12.horizontalSpace,
                 Expanded(
@@ -190,7 +191,7 @@ class PersonDetailsWidget extends StatelessWidget {
                     textAlign: TextAlign.start,
                     textScaler: const TextScaler.linear(0.97),
                     style: AppStylesUtil.textRegularStyle(
-                        14.sp, Colors.black, FontWeight.w400),
+                        14.sp, AppColorUtil.black, FontWeight.w400),
                   ),
                 ),
               ],
@@ -198,12 +199,12 @@ class PersonDetailsWidget extends StatelessWidget {
             8.verticalSpace,
             Text(
               cubit.personDetailsModel!.gender == 1
-                  ? 'Her Images'
-                  : 'His images',
+                  ? herImages
+                  : hisImages,
               textAlign: TextAlign.start,
               textScaler: const TextScaler.linear(0.97),
               style: AppStylesUtil.textSemiBoldStyle(
-                  18.sp, Colors.black, FontWeight.w600),
+                  18.sp, AppColorUtil.black, FontWeight.w600),
             ),
             8.verticalSpace,
             const PersonImagesWidget(),

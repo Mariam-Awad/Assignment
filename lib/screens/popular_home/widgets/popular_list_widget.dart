@@ -1,7 +1,10 @@
-import 'package:assignment/presentation/screens/popular_home_cubit/popular_home_cubit.dart';
-import 'package:assignment/presentation/screens/popular_home_cubit/popular_people_state.dart';
-import 'package:assignment/presentation/widgets/popular_card_widget.dart';
+import 'package:assignment/screens/popular_home/popular_home_cubit/popular_home_cubit.dart';
+import 'package:assignment/screens/popular_home/popular_home_cubit/popular_people_state.dart';
+import 'package:assignment/screens/popular_home/widgets/popular_card_widget.dart';
+import 'package:assignment/utils/app_colors_util.dart';
+import 'package:assignment/utils/app_debug_prints.dart';
 import 'package:assignment/utils/app_routes.dart';
+import 'package:assignment/utils/app_strings.dart';
 import 'package:assignment/utils/app_styles_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,9 +28,9 @@ class PopularListWidget extends StatelessWidget {
       else if (state is GetAllPopularPeopleErrorState) {
         return Center(
           child: Text(
-            'No People for Show!',
+            noPeopleForShow,
             style: AppStylesUtil.textRegularStyle(
-                16, Colors.black, FontWeight.w400),
+                16, AppColorUtil.black, FontWeight.w400),
           ),
         );
       } else {
@@ -35,6 +38,7 @@ class PopularListWidget extends StatelessWidget {
           onNotification: (scrollNotification) {
             if (scrollNotification is ScrollEndNotification &&
                 scrollNotification.metrics.extentAfter == 0) {
+              printDone('PAGINATION CALL');
               cubit.paginationFun();
             }
             return false;

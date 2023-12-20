@@ -1,6 +1,8 @@
 import 'package:assignment/cache/app_cache.dart';
-import 'package:assignment/presentation/screens/person_details_cubit/person_details_cubit.dart';
-import 'package:assignment/presentation/screens/popular_home_cubit/popular_home_cubit.dart';
+import 'package:assignment/screens/person_details/person_details_cubit/person_details_cubit.dart';
+import 'package:assignment/screens/popular_home/popular_home_cubit/popular_home_cubit.dart';
+import 'package:assignment/screens/popular_home/view/popular_people_screen.dart';
+import 'package:assignment/utils/app_colors_util.dart';
 import 'package:assignment/utils/app_routes.dart';
 import 'package:assignment/utils/route_manager.dart';
 import 'package:bot_toast/bot_toast.dart';
@@ -37,34 +39,15 @@ class MyApp extends StatelessWidget {
             builder: BotToastInit(),
             navigatorObservers: [BotToastNavigatorObserver()],
             debugShowCheckedModeBanner: false,
+            initialRoute: AppRoutes.homeRouteName,
+            onGenerateRoute: AppRouteManager.generateRoute,
             title: "T M D B",
             theme: ThemeData(
-              colorScheme: ColorScheme.fromSeed(seedColor: Colors.blueGrey),
+              colorScheme:
+                  ColorScheme.fromSeed(seedColor: AppColorUtil.blueGrey),
               useMaterial3: true,
             ),
-            home: MyHomePage(title: ''),
           ),
         ));
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(
-      initialRoute: AppRoutes.homeRouteName,
-      onGenerateRoute: AppRouteManager.generateRoute,
-      debugShowCheckedModeBanner: false,
-      title: 'T M D B',
-    );
   }
 }

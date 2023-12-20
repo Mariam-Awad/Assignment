@@ -1,5 +1,5 @@
-import 'package:assignment/models/popular_people_model.dart';
 import 'package:assignment/network/end_points.dart';
+import 'package:assignment/utils/app_colors_util.dart';
 import 'package:assignment/utils/app_styles_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -22,7 +22,7 @@ class PopularCardWidget extends StatelessWidget {
       child: SizedBox(
         height: MediaQuery.of(context).size.height * 0.15,
         child: Card(
-          color: Colors.white,
+          color: AppColorUtil.white,
           elevation: 6.0,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
@@ -53,7 +53,7 @@ class PopularCardWidget extends StatelessWidget {
                         textAlign: TextAlign.start,
                         textScaler: const TextScaler.linear(0.97),
                         style: AppStylesUtil.textSemiBoldStyle(
-                            16.sp, Colors.black, FontWeight.w600),
+                            16.sp, AppColorUtil.black, FontWeight.w600),
                       ),
                       Text(
                         description.toString(),
@@ -62,7 +62,7 @@ class PopularCardWidget extends StatelessWidget {
                         overflow: TextOverflow.ellipsis,
                         textScaler: const TextScaler.linear(0.97),
                         style: AppStylesUtil.textRegularStyle(
-                            13.sp, Colors.black, FontWeight.w400),
+                            13.sp, AppColorUtil.black, FontWeight.w400),
                       ),
                     ],
                   ),

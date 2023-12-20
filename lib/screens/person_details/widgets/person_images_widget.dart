@@ -1,9 +1,10 @@
-import 'package:assignment/presentation/screens/person_details_cubit/image_screen.dart';
-import 'package:assignment/presentation/screens/person_details_cubit/person_details_cubit.dart';
-import 'package:assignment/presentation/screens/person_details_cubit/person_details_state.dart';
-import 'package:assignment/presentation/widgets/gallary_widget.dart';
+import 'package:assignment/screens/person_details/view/image_screen.dart';
+import 'package:assignment/screens/person_details/person_details_cubit/person_details_cubit.dart';
+import 'package:assignment/screens/person_details/person_details_cubit/person_details_state.dart';
+import 'package:assignment/screens/person_details/widgets/gallary_widget.dart';
+import 'package:assignment/utils/app_colors_util.dart';
 import 'package:assignment/utils/app_debug_prints.dart';
-import 'package:assignment/utils/app_routes.dart';
+import 'package:assignment/utils/app_strings.dart';
 import 'package:assignment/utils/app_styles_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,18 +28,18 @@ class PersonImagesWidget extends StatelessWidget {
       else if (state is PersonImagesErrorState) {
         return Center(
           child: Text(
-            'Please try again later',
+            pleaseTryAgainLater,
             style: AppStylesUtil.textRegularStyle(
-                16, Colors.black, FontWeight.w400),
+                16, AppColorUtil.black, FontWeight.w400),
           ),
         );
       } else if (state is PersonImagesSuccessState &&
           cubit.personImagesModel!.profiles == []) {
         return Center(
           child: Text(
-            'No Images',
+            noImages,
             style: AppStylesUtil.textRegularStyle(
-                16, Colors.black, FontWeight.w400),
+                16, AppColorUtil.black, FontWeight.w400),
           ),
         );
       } else {
@@ -69,16 +70,6 @@ class PersonImagesWidget extends StatelessWidget {
                                 .personImagesModel!.profiles![index].height!,
                           )),
                 );
-                // Navigator.pushNamed(
-                //   context,
-                //   AppRoutes.imageRouteName,
-                //   arguments: {
-                //     cubit.personImagesModel!.profiles![index].filePath,
-                //     cubit.personImagesModel!.profiles![index].width,
-                //     cubit.personImagesModel!.profiles![index].height,
-                //     cubit.personImagesModel!.profiles![index].aspectRatio
-                //   },
-                // );
               });
             });
       }

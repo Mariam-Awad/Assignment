@@ -1,9 +1,11 @@
 import 'package:assignment/cache/app_cache.dart';
 import 'package:assignment/models/person_details_model.dart';
 import 'package:assignment/models/person_images_model.dart';
-import 'package:assignment/presentation/screens/person_details_cubit/person_details_state.dart';
+import 'package:assignment/screens/person_details/person_details_cubit/person_details_state.dart';
 import 'package:assignment/repositories/person_details_repo.dart';
+import 'package:assignment/utils/app_colors_util.dart';
 import 'package:assignment/utils/app_debug_prints.dart';
+import 'package:assignment/utils/app_strings.dart';
 import 'package:assignment/utils/app_styles_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -54,22 +56,22 @@ class PersonDetailsCubit extends Cubit<PersonDetailsState> {
       if (success != null && success == true) {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             behavior: SnackBarBehavior.floating,
-            backgroundColor: Colors.green,
+            backgroundColor: AppColorUtil.green,
             content: Text(
-              'Saved Successfully',
+              savedSuccessfully,
               textAlign: TextAlign.center,
               style: AppStylesUtil.textRegularStyle(
-                  18, Colors.white, FontWeight.w400),
+                  18, AppColorUtil.white, FontWeight.w400),
             )));
       } else {
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
             behavior: SnackBarBehavior.floating,
-            backgroundColor: Colors.red,
+            backgroundColor: AppColorUtil.red,
             content: Text(
-              'Not Saved Successfully',
+              noSavedSuccessfully,
               textAlign: TextAlign.center,
               style: AppStylesUtil.textRegularStyle(
-                  18, Colors.white, FontWeight.w400),
+                  18, AppColorUtil.white, FontWeight.w400),
             )));
       }
     });
