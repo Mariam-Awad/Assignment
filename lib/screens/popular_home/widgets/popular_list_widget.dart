@@ -36,8 +36,7 @@ class PopularListWidget extends StatelessWidget {
       } else {
         return NotificationListener<ScrollNotification>(
           onNotification: (scrollNotification) {
-            if (scrollNotification is ScrollEndNotification &&
-                scrollNotification.metrics.extentAfter == 0) {
+            if (scrollNotification is ScrollEndNotification) {
               printDone('PAGINATION CALL');
               cubit.paginationFun();
             }
@@ -45,7 +44,6 @@ class PopularListWidget extends StatelessWidget {
           },
           child: GridView.builder(
               controller: PopularPeopleCubit.get(context).scrollController,
-              physics: const NeverScrollableScrollPhysics(),
               gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,
                   mainAxisSpacing: 4.0,
@@ -54,8 +52,9 @@ class PopularListWidget extends StatelessWidget {
               itemCount: cubit.allPeople.length + (cubit.isLoading ? 1 : 0),
               shrinkWrap: true,
               itemBuilder: (BuildContext context, int index) {
-                String? res = cubit.knownFor(cubit.allPeople[index].knownFor!);
                 if (index < cubit.allPeople.length) {
+                  String? res =
+                      cubit.knownFor(cubit.allPeople[index].knownFor!);
                   return PopularCardWidget(cubit.allPeople[index].profilePath!,
                       cubit.allPeople[index].name!, res ?? '', () {
                     Navigator.pushNamed(
@@ -65,11 +64,9 @@ class PopularListWidget extends StatelessWidget {
                     );
                   });
                 } else {
-                  return IconButton(
-                    onPressed: () {
-                      cubit.getPopularPeopleList();
-                    },
-                    icon: const Icon(Icons.refresh),
+                  return SizedBox(
+                    height: 5.h,
+                    width: 5.w,
                   );
                 }
               }),

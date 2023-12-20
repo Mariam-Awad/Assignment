@@ -80,6 +80,7 @@ class PopularPeopleCubit extends Cubit<PopularState> {
   }
 
   paginationFun() {
+    printWarning('IN OAGINATON FUNC');
     if (isLoading == false && currentPage < lastPage) {
       isLoading = true;
       currentPage++;

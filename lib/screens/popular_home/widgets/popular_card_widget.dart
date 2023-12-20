@@ -36,8 +36,9 @@ class PopularCardWidget extends StatelessWidget {
                     fit: BoxFit.contain,
                     imageUrl: '${Endpoints.REQUEST_NETWORK_IMAGE}' + image,
                     placeholder: (context, url) =>
-                        const Center(child:  CircularProgressIndicator()),
-                    errorWidget: (context, url, error) => const Icon(Icons.error),
+                        const Center(child: CircularProgressIndicator()),
+                    errorWidget: (context, url, error) =>
+                        const Icon(Icons.error),
                   ),
                 ),
               ),
@@ -60,9 +61,9 @@ class PopularCardWidget extends StatelessWidget {
                         textAlign: TextAlign.start,
                         maxLines: 2,
                         overflow: TextOverflow.ellipsis,
-                        textScaler: const TextScaler.linear(0.97),
+                        textScaler: const TextScaler.linear(0.95),
                         style: AppStylesUtil.textRegularStyle(
-                            13.sp, AppColorUtil.black, FontWeight.w400),
+                            11.sp, AppColorUtil.black, FontWeight.w400),
                       ),
                     ],
                   ),

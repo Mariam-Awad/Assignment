@@ -15,22 +15,28 @@ class PopularHomeScreen extends StatelessWidget {
     return BlocProvider<PopularPeopleCubit>(
       create: (BuildContext context) => PopularPeopleCubit(),
       child: Scaffold(
-        appBar: AppBar(),
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 8.h),
-            child: Column(
-              children: [
-                Align(
-                    child: Text(
-                  popularPeople,
-                  style: AppStylesUtil.textBoldStyle(
-                      22.sp, AppColorUtil.black, FontWeight.w700),
-                )),
-                const PopularListWidget(),
-              ],
-            ),
+        appBar: AppBar(
+          automaticallyImplyLeading: true,
+          leading: IconButton(
+              onPressed: () {
+                Navigator.pop(context);
+              },
+              icon: Icon(
+                Icons.arrow_back,
+                color: AppColorUtil.black,
+              )),
+          backgroundColor: AppColorUtil.white,
+          foregroundColor: AppColorUtil.white,
+          centerTitle: true,
+          title: Text(
+            popularPeople,
+            style: AppStylesUtil.textBoldStyle(
+                22.sp, AppColorUtil.black, FontWeight.w700),
           ),
+        ),
+        body: Padding(
+          padding: EdgeInsets.only(left: 16.w, right: 16.w, bottom: 8.h),
+          child: const PopularListWidget(),
         ),
       ),
     );
