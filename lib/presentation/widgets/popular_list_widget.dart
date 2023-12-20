@@ -21,18 +21,8 @@ class PopularListWidget extends StatelessWidget {
           child: CircularProgressIndicator(),
         );
       }
-      //============================ Error ============================
-      else if (cubit.responseGetPopularList == null) {
-        return Center(
-          child: Text(
-            'Error!',
-            style: AppStylesUtil.textRegularStyle(
-                16, Colors.black, FontWeight.w400),
-          ),
-        );
-      }
       //============================ Success ===========================
-      else if (cubit.allPeople.isEmpty) {
+      else if (state is GetAllPopularPeopleErrorState) {
         return Center(
           child: Text(
             'No People for Show!',
@@ -41,7 +31,6 @@ class PopularListWidget extends StatelessWidget {
           ),
         );
       } else {
-        print('000000000000');
         return NotificationListener<ScrollNotification>(
           onNotification: (scrollNotification) {
             if (scrollNotification is ScrollEndNotification &&

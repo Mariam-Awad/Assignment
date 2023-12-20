@@ -12,7 +12,7 @@ class PopularHomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider<PopularPeopleCubit>(
       create: (BuildContext context) =>
-          PopularPeopleCubit()..getPopularPeopleList(),
+          PopularPeopleCubit(),
       child: Scaffold(
         appBar: AppBar(),
         body: SingleChildScrollView(

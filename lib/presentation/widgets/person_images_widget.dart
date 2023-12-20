@@ -24,7 +24,7 @@ class PersonImagesWidget extends StatelessWidget {
         );
       }
       //============================ Error ============================
-      else if (state is PersonImagesErrorState ) {
+      else if (state is PersonImagesErrorState) {
         return Center(
           child: Text(
             'Please try again later',
@@ -32,7 +32,7 @@ class PersonImagesWidget extends StatelessWidget {
                 16, Colors.black, FontWeight.w400),
           ),
         );
-      }else if (state is PersonImagesSuccessState &&
+      } else if (state is PersonImagesSuccessState &&
           cubit.personImagesModel!.profiles == []) {
         return Center(
           child: Text(
@@ -49,7 +49,9 @@ class PersonImagesWidget extends StatelessWidget {
                 mainAxisSpacing: 4.0,
                 crossAxisSpacing: 4.0,
                 childAspectRatio: 210.w / 350.h),
-            itemCount: cubit.personImagesModel != null ? cubit.personImagesModel!.profiles!.length : 0,
+            itemCount: cubit.personImagesModel != null
+                ? cubit.personImagesModel!.profiles!.length
+                : 0,
             shrinkWrap: true,
             itemBuilder: (BuildContext context, int index) {
               printError(cubit.personImagesModel!.profiles![index].filePath!);
