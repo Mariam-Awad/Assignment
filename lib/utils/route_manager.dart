@@ -1,3 +1,4 @@
+import 'package:assignment/presentation/screens/person_details_cubit/image_screen.dart';
 import 'package:assignment/presentation/screens/person_details_cubit/person_details_screen.dart';
 import 'package:assignment/presentation/screens/popular_home_cubit/popular_people_screen.dart';
 import 'package:assignment/utils/app_debug_prints.dart';
@@ -19,6 +20,11 @@ class AppRouteManager {
           builder: (context) => PersonDetailsScreen(
             id: args as int,
           ),
+        );
+      case AppRoutes.imageRouteName:
+        return MaterialPageRoute(
+          settings: RouteSettings(arguments: args),
+          builder: (context) => const ImageScreen(),
         );
       default:
         return MaterialPageRoute(
