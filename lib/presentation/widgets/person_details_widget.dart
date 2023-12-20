@@ -1,6 +1,8 @@
 import 'package:assignment/network/end_points.dart';
 import 'package:assignment/presentation/screens/person_details_cubit/person_details_cubit.dart';
 import 'package:assignment/presentation/screens/person_details_cubit/person_details_state.dart';
+import 'package:assignment/presentation/widgets/gallary_widget.dart';
+import 'package:assignment/presentation/widgets/person_images_widget.dart';
 import 'package:assignment/utils/app_styles_util.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -33,7 +35,6 @@ class PersonDetailsWidget extends StatelessWidget {
       }
       //============================ Success ===========================
       else {
-        print('000000000000');
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -193,7 +194,19 @@ class PersonDetailsWidget extends StatelessWidget {
                   ),
                 ),
               ],
-            )
+            ),
+            8.verticalSpace,
+            Text(
+              cubit.personDetailsModel!.gender == 1
+                  ? 'Her Images'
+                  : 'His images',
+              textAlign: TextAlign.start,
+              textScaler: const TextScaler.linear(0.97),
+              style: AppStylesUtil.textSemiBoldStyle(
+                  18.sp, Colors.black, FontWeight.w600),
+            ),
+            8.verticalSpace,
+            const PersonImagesWidget(),
           ],
         );
       }

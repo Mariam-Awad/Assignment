@@ -1,5 +1,6 @@
 import 'package:assignment/cache/app_cache.dart';
 import 'package:assignment/models/person_details_model.dart';
+import 'package:assignment/models/person_images_model.dart';
 import 'package:assignment/presentation/screens/person_details_cubit/person_details_state.dart';
 import 'package:assignment/repositories/person_details_repo.dart';
 import 'package:assignment/utils/app_debug_prints.dart';
@@ -10,9 +11,11 @@ class PersonDetailsCubit extends Cubit<PersonDetailsState> {
   static PersonDetailsCubit get(context) => BlocProvider.of(context);
 
   PersonDetailsModel? personDetailsModel;
+  PersonImagesModel? personImagesModel;
   PersonDetailsRepo personRepo = PersonDetailsRepo();
 
   getPersonDetails(int id) async {
+    getPersonImages(id);
     printDone('in getPersonDetails func');
     emit(PersonDetailsLoadingState());
     personDetailsModel = await personRepo.requestGetPersonDetails(id);
@@ -25,7 +28,20 @@ class PersonDetailsCubit extends Cubit<PersonDetailsState> {
     }
   }
 
-    String? alsoknownAs(List<String> list) {
+  getPersonImages(int id) async {
+    printDone('in getPersonImages func');
+    emit(PersonImagesLoadingState());
+    personImagesModel = await personRepo.requestGetPersonImages(id);
+    if (personImagesModel != null) {
+      AppCache.instance.setPersonImages(personImagesModel);
+      printDone(personImagesModel!.profiles!);
+      emit(PersonImagesSuccessState());
+    } else {
+      emit(PersonImagesErrorState());
+    }
+  }
+
+  String? alsoknownAs(List<String> list) {
     String result = list.map((e) => e).join(', ');
     return result;
   }
