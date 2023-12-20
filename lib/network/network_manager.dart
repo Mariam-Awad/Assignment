@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'package:assignment/cache/app_cache.dart';
 import 'package:assignment/network/parser.dart';
 import 'package:assignment/utils/app_debug_prints.dart';
 import 'package:dio/dio.dart';
@@ -9,10 +8,6 @@ class NetworkManager {
   CancelToken? cancelToken;
 
   Map<String, dynamic> headers = {
-    "Accept": "application/json",
-    "Content-Type": "application/json",
-  };
-  Map<String, dynamic> headersFile = {
     "Accept": "application/json",
     "Content-Type": "application/json",
   };
@@ -30,33 +25,23 @@ class NetworkManager {
   }
 
   void _updateHeaders() {
-    printError(AppCache.instance.getApiToken().toString());
-    if (AppCache.instance.getApiToken() != null) {
-      String? token = AppCache.instance.getApiToken();
-      printDone('token is: $token');
-      if (token != null) {
-        headers['Authorization'] = "$token";
-      }
-    }
-    /*
-    var lang = AppCache.instance.getLanguage();
-    if (lang != null) {
-      headers['Accept-Language'] = lang;
-    }*/
+    String token =
+        "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJjMWVhNzk1ZTliMGQ3NmVhYWVmMzc2YzkyOTMwZmMyNyIsInN1YiI6IjY1ODE5OGExZGY4NmE4MDhkYWU4YmY1ZiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.Ih7bBtxfCpvmwmGOJp_yYiCmgjWqNMExtgac6NnGeSg";
+    headers['Authorization'] = "Bearer $token";
   }
 
   Future<T?> get<T>(String url, {Map<String, dynamic>? params}) async {
     _updateHeaders();
-    print(headers);
+    printDone(headers);
     if (params == null) params = {};
-    print(params);
+    printDone(params);
 
     Response response = await dio.get(url,
         queryParameters: params,
         cancelToken: cancelToken,
         options: Options(headers: headers));
-    print(response.statusCode);
-    print("*************");
+    printDone(response.statusCode.toString());
+    printDone("*************");
 
     return parseResponse<T>(response);
   }
@@ -76,7 +61,7 @@ class NetworkManager {
   Future<T?> post<T>(String url, {Map<String, dynamic>? body}) async {
     _updateHeaders();
     if (body == null) body = {};
-    print(body);
+    printDone(body);
 
     var formData = json.encode(body);
     Response response = await dio.post(url,
@@ -90,7 +75,7 @@ class NetworkManager {
   Future<T?> put<T>(String url, {Map<String, dynamic>? body}) async {
     _updateHeaders();
     if (body == null) body = {};
-    print(body);
+    printDone(body);
 
     var formData = json.encode(body);
     Response response = await dio.put(url,
@@ -128,7 +113,6 @@ class NetworkManager {
   Future<T?> delete<T>(String url, {Map<String, dynamic>? params}) async {
     _updateHeaders();
     if (params == null) params = {};
-//    print(params);
 
     Response response = await dio.delete(url,
         queryParameters: params,
@@ -136,31 +120,6 @@ class NetworkManager {
         options: Options(headers: headers));
 
     return parseResponse<T>(response);
-  }
-
-  Future<T?> postFile<T>(String url, FormData formdata, String? data) async {
-    _updateHeadersFile();
-    if (formdata == null) formdata;
-    var body = {
-      "file": formdata,
-      "national_id": data,
-    };
-    print(formdata);
-    Response response = await dio.post(url,
-        cancelToken: cancelToken,
-        options: Options(headers: headersFile),
-        data: formdata);
-
-    return parseResponse<T>(response);
-  }
-
-  void _updateHeadersFile() {
-    if (AppCache.instance.getApiToken() != null) {
-      String? token = AppCache.instance.getApiToken()!;
-      if (token != null) {
-        headersFile['Authorization'] = "Bearer $token";
-      }
-    }
   }
 
   T? parseResponse<T>(Response response) {
@@ -171,7 +130,7 @@ class NetworkManager {
       return response.data;
     } else {
       map = response.data;
-      print('MAP IS: $map');
+      printDone('MAP IS: $map');
     }
 
     return Parser.parse<T>(map);
